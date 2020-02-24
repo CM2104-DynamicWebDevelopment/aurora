@@ -31,7 +31,6 @@ h4 {
 }
 
 h1 {
-    font-size: 1rem;
     font-weight: normal;
 }
 
@@ -54,14 +53,6 @@ header h1,
 header h2 {
     color: var(--white);
 
-}
-
-.black {
-    color: var(--black);
-}
-
-.text-center {
-    text-align: center;
 }
 
 .icon {
@@ -125,15 +116,10 @@ main {
     width: 80%;
     height: auto;
     overflow: auto;
-    margin: 0 5% 10% 10%;
+    margin: 0 10%;
 }
 
 img {
-    height: auto;
-    overflow: auto;
-}
-
-.placeholders {
     width: 100%;
     height: auto;
     overflow: auto;
@@ -164,102 +150,9 @@ img {
     flex: 50%;
 }
 
-/* STYLES FOR WEATHER FORECAST ELEMENTS */
 #left-image {
-    font-family: 'Montserrat', sans-serif;
-    background-color: #FFF;
-    margin: 0;
-    border-radius: 10px;
-    padding-bottom: 50px;
+    margin-right: 10px;
 }
-
-.weather-title {
-    width: 100%;
-    height: auto;
-    border-radius: 10px 10px 0 0;
-}
-
-.weather-title p {
-    text-align: center;
-    padding: 8px;
-    margin: 0 auto;
-    font-size: 1.2em;
-    color: #293251;
-}
-
-.notification {
-    background-color: #f8d7da;
-    display: none;
-}
-
-.notification p {
-    color: #721c24;
-    font-size: 1.2em;
-    margin: 0;
-    text-align: center;
-    padding: 10px 0;
-}
-
-.weather-container {
-    width: 100%;
-    height: auto;
-    background-color: #F4F9FF;
-}
-
-.weather-icon {
-    width: 100%;
-    height: auto;
-}
-
-.weather-icon img {
-    display: block;
-    margin: 0 auto;
-}
-
-.temperature {
-    width: 100%;
-    height: auto;
-}
-
-.temperature p {
-    padding: 0;
-    margin: 0;
-    color: #293251;
-    font-size: 3em;
-    text-align: center;
-    cursor: pointer;
-}
-
-.temperature p:hover {}
-
-.temperature span {
-    color: #293251;
-    font-size: 0.5em;
-}
-
-.temperature-description {
-    width: 100%;
-    height: auto;
-}
-
-.temperature-description p {
-    padding: 8px;
-    margin: 0;
-    color: #293251;
-    text-align: center;
-    font-size: 1.2em;
-}
-
-.weather-location {}
-
-.weather-location p {
-    margin: 0;
-    padding: 0;
-    color: #293251;
-    text-align: center;
-    font-size: 0.8em;
-}
-
 
 .fa-bars,
 .fa-times,
@@ -294,10 +187,6 @@ hr {
     margin: auto;
 }
 
-#menu .flex-container {
-    justify-content: space-around;
-}
-
 .icon a,
 .icon h4 {
     margin-left: 10%;
@@ -311,10 +200,6 @@ hr {
 /*Map container*/
 #map {
     margin-top: 20%;
-}
-
-.flex-center {
-    justify-content: center;
 }
 
 /*Leaflet map custom style*/
