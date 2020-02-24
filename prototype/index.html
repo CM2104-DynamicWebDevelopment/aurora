@@ -6,13 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aurora</title>
 
-    <!-- CSS Stylesheets, Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css?family=Hind|Montserrat:300,400,600&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/59dd3e37d5.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/backgrounds/index-mob.css">
-
-    <!-- JS Scripts and jQuery -->
     <!--Leaflet map css files-->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
     integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
@@ -30,24 +27,22 @@
 <body>
 
     <header>
-        <!-- Default Header -->
         <nav class="icon">
             <div class="flex-container">
                 <a id="title" href="#">
-                    <h1>AURORA</h1>
+                    <h1>Aurora</h1>
                 </a>
                 <i class="fas fa-bars"></i>
             </div>
         </nav>
 
-        <!-- Hamburger Menu -->
         <nav id="menu">
             <div class="flex-container">
                 <h1>Menu</h1>
                 <i class="fas fa-times"></i>
             </div>
             <div class="flex-column">
-                <a href="index.html">
+                <a href="login.html">
                     <h2>Home</h2>
                 </a>
                 <a href="login.html">
@@ -65,27 +60,7 @@
     <main>
         <section id="welcome">
             <h2>Welcome Back, First Name</h2>
-
-            <!-- Placeholder images for dynamic content -->
             <div id="map">
-                <img class="placeholders" src="https://via.placeholder.com/300x150.png?text=Google+Map">
-            </div>
-            <div class="flex-container flex-center">
-                <!-- CONTAINER FOR WEATHER FORECAST -->
-                <div class="notification"> </div>
-                <div class="weather-container">
-                    <h4 class="black text-center">Weather Forecast</h4>
-                    <div class="weather-icon">
-                        <img src="img/weather-icons/unknown.png" alt="">
-                    </div>
-                    <div class="temperature">
-                        <p>- °<span>C</span></p>
-                    </div>
-                    <div class="temperature-description">
-                        <p> - </p>
-                    </div>
-                    <div class="weather-location">
-                        <p>-</p>
                 <!--leaflet map-->
                 <div id="mapid"></div>
                 <!--call map script-->
@@ -124,10 +99,8 @@
                     </div>
                 </div>
             </div>
-            <img class="placeholders" src="https://via.placeholder.com/150x150.png?text=Aurora+Status">
         </section>
 
-        <!-- Text about project and tips for seeing Aurora -->
         <section id="about-us">
             <h3>ABOUT US</h3>
             <div id="about-us-text">
@@ -142,7 +115,6 @@
             </div>
         </section>
     </main>
-    <script src="js/app.js"></script>
 </body>
 
 </html>
