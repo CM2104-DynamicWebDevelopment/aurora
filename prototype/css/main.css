@@ -308,10 +308,19 @@ hr {
     margin-right: 10%;
 }
 
+/*Map container*/
 #map {
     margin-top: 20%;
 }
 
 .flex-center {
     justify-content: center;
+}
+
+/*Leaflet map custom style*/
+#mapid { 
+    position: relative;
+    margin-top: 50%;
+    height: 180px; 
+    z-index: -1;
 }

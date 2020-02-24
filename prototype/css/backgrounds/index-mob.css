@@ -1,5 +1,5 @@
+/*Background for the mobile version of index page*/
 body{
-    
   background:
   linear-gradient(
       rgba(168, 168, 168, 0.5), 
@@ -12,6 +12,7 @@ body{
   background-color: black;
 }
 
+/*Menu background color*/
 #menu{
   background-color: black;
 }

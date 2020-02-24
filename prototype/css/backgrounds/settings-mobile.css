@@ -1,5 +1,5 @@
+/*Background for the mobile version of settings page*/
 body{
-    
     background:
     linear-gradient(
         rgba(168, 168, 168, 0.5), 
@@ -10,6 +10,7 @@ body{
     background-size: 2150px;
 }
 
+/*Menu bar background color*/
 #menu{
     background-color: black;
   }
