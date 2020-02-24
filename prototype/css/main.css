@@ -202,7 +202,7 @@ hr {
 }
 
 #mapid { 
+    position: relative;
     margin-top: 50%;
-    display: absolute;
     height: 180px; 
 }
