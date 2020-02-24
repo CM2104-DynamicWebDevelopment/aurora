@@ -200,3 +200,9 @@ hr {
 #map {
     margin-top: 20%;
 }
+
+#mapid { 
+    margin-top: 50%;
+    display: absolute;
+    height: 180px; 
+}
