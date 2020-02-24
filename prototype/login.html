@@ -6,26 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Aurora</title>
 
+    <!-- CSS Stylesheets, Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css?family=Hind|Montserrat:300,400,600&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/59dd3e37d5.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/backgrounds/login-mobile.css">
 
+    <!-- JS Scripts and jQuery -->
     <script src="js/vendor/jquery-1.11.2.min.js"></script>
     <script src="js/main.js"></script>
-    <link rel="stylesheet" href="css/backgrounds/login-mobile.css">
 </head>
 
 <body>
 
     <header>
+        <!-- Default Header -->
         <nav class="icon">
             <div class="flex-container">
                 <a href="index.html">
-                    <h1>Aurora</h1>
+                    <h1>AURORA</h1>
                 </a>
                 <i class="fas fa-bars"></i>
             </div>
         </nav>
 
+        <!-- Hamburger Menu -->
         <nav id="menu">
             <div class="flex-container">
                 <h1>Menu</h1>
@@ -49,11 +54,15 @@
     </header>
     <main>
         <h2>Welcome Back, Log In</h2>
+
+        <!-- Login form -->
         <form>
             <input type="text" name="name" placeholder="Name">
             <input type="text" name="password" placeholder="Password">
             <button value="login">Log In</button>
         </form>
+
+        <!-- Register Link -->
         <p id="form-text">Not got an account? Sign Up <a href="signup.html">Here</a></p>
     </main>
 </body>
