@@ -15,6 +15,8 @@ const session = require('express-session');
 
 var multer = require('multer');
 var path = require('path');
+const sharp = require('sharp');
+const fs = require('fs');
 
 // Multer DiskStorage - for storing images
 
@@ -111,6 +113,15 @@ app.post('/upload', upload.single('aurora'), function (req, res, next) {
     console.log(req.file);
     console.log(req.file.filename);
     var photofile = req.file;
+
+    // resize image to 235px width
+    sharp(req.file).resize(235).toBuffer(function (err, buf) {
+        if (err) return next(err)
+        const image =  buf.toString('base64');
+        fs.writeFile(req.file, image, {encoding: 'base64'},  function(err){
+        console.log(err);
+        });
+    });
 
     // save image file details in db
     db.collection('photo').save(photofile, function(err, result) {

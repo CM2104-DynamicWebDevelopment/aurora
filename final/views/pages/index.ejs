@@ -24,9 +24,6 @@
     <main>
         <!-- Page Title -->
         <section id="welcome">
-            <div id="ejs-variable">
-                <img id="uploadedphoto" src="../img/uploads/aurora/<%= photo %>">
-            </div>
             <!-- New Entry pop up -->
             <div class="popup-container">
                 <div id="new-popup">
@@ -167,6 +164,9 @@
                 </p>
             </div>
         </section>
+        <div id="ejs-variable">
+                <img id="uploadedphoto" src="../img/uploads/aurora/<%= photo %>">
+            </div>
     </main>
     <footer id="foot-index">
         <%- include("../partials/footer") %>
