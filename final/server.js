@@ -127,7 +127,8 @@ app.post('/upload', upload.single('aurora'), function (req, res, next) {
     db.collection('photo').save(photofile, function(err, result) {
     if (err) throw err;
     console.log('saved to database');
+      res.redirect("/");
     });
 
-    res.redirect("/");
+    
 });
