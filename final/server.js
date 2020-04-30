@@ -82,6 +82,7 @@ app.get('/', function (req, res) {
 
 // change password route
 app.get('/change-password', function (req, res) {
+     if(!req.session.loggedin){res.redirect('/login');return;}
     var isLogged = req.session.loggedin;
     var msg = '';
     res.render('pages/change-password', {changepass_error: msg, isLoggedIn: isLogged});
@@ -100,7 +101,7 @@ app.get('/login', function (req, res) {
 
 // profile route
 app.get('/profile', function (req, res) {
-
+     if(!req.session.loggedin){res.redirect('/login');return;}
     //Login status
     var isLogged = req.session.loggedin;
     var loggedUser = req.session.username;
@@ -227,6 +228,8 @@ app.post('/put-marker', upload.single('observation'), function (req, res, next) 
 
 // settings route
 app.get('/settings', function (req, res) {
+     if(!req.session.loggedin){res.redirect('/login');return;}
+
     var isLogged = req.session.loggedin;
     res.render('pages/settings', {isLoggedIn: isLogged});
 });
@@ -301,7 +304,8 @@ app.post('/uploadProfile', upload.single('profile'), function (req, res, next) {
     console.log("If Observation Req" + req.session.if_observation);
 
     
-    if(name == '' || password == '' || email == '' || pass_conf==''){
+    //d41d8cd98f00b204e9800998ecf8427e is an MD5 hash of empty string
+    if(name == '' || password == '' || email == '' || pass_conf=='' || pass_conf == 'd41d8cd98f00b204e9800998ecf8427e' || password == 'd41d8cd98f00b204e9800998ecf8427e'){
         error_msg = 'Please provide all details';
                    res.render('pages/signup', {
                        signup_error: error_msg,
@@ -367,7 +371,9 @@ app.post('/dologin', function(req,res){
     var error_msg = '';
     var isLogged = req.session.loggedin;
     
-    if(name == '' || password == ''){
+    
+    //d41d8cd98f00b204e9800998ecf8427e is MD5hash for empty string
+    if(name == '' || password == '' || password == 'd41d8cd98f00b204e9800998ecf8427e'){
         error_msg = 'Please enter your username and password';
                    res.render('pages/login', {
                        login_error: error_msg,
@@ -408,7 +414,8 @@ app.post('/changePassword', function(req, res){
     
     console.log('test changePassword');
     
-    if(newPass== '' || newPassConf == ''){
+    //d41d8cd98f00b204e9800998ecf8427e is MD5 hash for empty string
+    if(newPass== '' || newPassConf == '' || newPass== 'd41d8cd98f00b204e9800998ecf8427e' || newPassConf == 'd41d8cd98f00b204e9800998ecf8427e'){
         console.log('fields missing');
         error_msg = 'Please enter new password';
                    res.render('pages/change-password', {
