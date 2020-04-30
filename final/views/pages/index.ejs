@@ -29,10 +29,14 @@
                 <div id="new-popup">
                     <div id="popup-content" class="flex-container">
                         <p id="popup-msg"></p>
-                        <form action="/upload-aurora" method="post" enctype="multipart/form-data">
+                        <form id ='new_ob_form' action="/upload-aurora" method="post" enctype="multipart/form-data">
                         <input id="upload-aurora" type="file" accept="image/*" name="aurora" required>
                         <label id="upload-aurora-label" for="upload-aurora">Upload</label>
                         <div class="btn-flex-container">
+                            <input type="hidden" id="long" name="long" value="">
+                            <input type="hidden" id="lat" name="lat" value="">
+                            <input type="hidden" id="ob_date" name="ob_date" value="">
+                            <input type="hidden" id="ob_time" name="ob_time" value="">
                             <button id="popup-cancel" class="popup-btn" onclick="cancelLocation()">Cancel</button>
                             <input id="popup-save" class="popup-btn" onclick="addLocation()" type="submit" value="Save">
                         </div>

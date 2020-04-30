@@ -16,6 +16,8 @@ class Observation {
     }
 }
 
+var current_user_details;
+
 
 /* initialize the map */
 L.mapbox.accessToken = 'pk.eyJ1IjoibWlqYW1rYSIsImEiOiJjazZ6dXpoM3QwMDBnM2xwOGlmYnJ0M2F5In0.ibAoU9L8gv4ZEFpPvz5HkQ';
@@ -111,13 +113,9 @@ function recordNewLoc() {
         $("#new-popup").fadeIn();
         document.getElementById('new-popup').style.display = 'inline-block';
         var popup_txt_cont = document.getElementById('popup-msg');
-
-        //get users location
-        var user_loc = [];
-        user_loc[0] = position.coords.latitude;
-        user_loc[1] = position.coords.longitude;
-
-        //get current date and time
+        
+        
+         //get current date and time
         var current_date = new Date().toLocaleString("en-GB", {
             year: "numeric",
             day: "2-digit",
@@ -128,13 +126,25 @@ function recordNewLoc() {
             minute: "2-digit"
         });
 
+        //get users location
+        var user_loc = [];
+        user_loc[0] = position.coords.latitude;
+        user_loc[1] = position.coords.longitude;
+        
+        //update hidden form fields
+        $('#long').val(user_loc[1]);
+        $('#lat').val(user_loc[0]);
+        $('#ob_time').val(current_time);
+        $('#ob_date').val(current_date);
+
         //Display data for used to review before they submit new location
         var conf_txt = 'Following details will be added to the map and visible to all users:<br><br>Location: ' + user_loc[0] + ', ' + user_loc[1] +
             '<br>Date: ' + current_date + '<br>Time: ' + current_time;
 
         //Display txt in the popup box
         popup_txt_cont.innerHTML = conf_txt;
-        var current_user_details = [user_loc[0], user_loc[1], current_date, current_time];
+        current_user_details = [user_loc[0], user_loc[1], current_date, current_time];
+        
     }
 
     //Display an error msg prompting user to allow geolocation permissions in case they werent granted
@@ -160,26 +170,6 @@ function addLocation() {
     //close the popup
     document.getElementById('new-popup').style.display = 'none';
     $("#overlay").remove();
-
-    //get user's data from the temporary variable
-    var username = JSON.parse(localStorage.getItem('userID'));
-    var current_user_details = JSON.parse(localStorage.getItem('current_user_details'));
-    var latitude = current_user_details[0];
-    var longitude = current_user_details[1];
-    var current_date = current_user_details[2];
-    var current_time = current_user_details[3];
-
-    var observation_photo = document.getElementById("uploadedphoto").outerHTML;
-    console.log(observation_photo);
-    var observations_saved = JSON.parse(localStorage.getItem('observations'));
-    if (observations_saved == null) {
-        observations_saved = [];
-    }
-
-    //push new data and save them in observations list in localStorage (temporary solution)
-    let new_observation = new Observation(username, latitude, longitude, current_date, current_time, observation_photo);
-    observations_saved.push(new_observation);
-    localStorage.setItem('observations', JSON.stringify(observations_saved));
 
     //refresh the map
     var map = window.mymap;

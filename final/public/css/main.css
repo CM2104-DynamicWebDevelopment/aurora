@@ -189,7 +189,7 @@ input[type=submit] {
     color: var(--white);
 }
 
-#rpassConf + label, #rusername + label, #remail + label, #rpassword + label, #lusername + label, #lpassword + label {
+#rpassConf + label, #rusername + label, #remail + label, #rpassword + label, #lusername + label, #lpassword + label, #newPwd + label, #newPwdConf + label {
     display: none;
 }
 
@@ -718,7 +718,7 @@ header .icon a {
 
 
 #record-not-logged {
-    height: 25%;
+    height: 50%;
     max-width: 500px;
     max-height: 250px;
     top: 50%;
@@ -767,7 +767,6 @@ header .icon a {
     flex-flow: row nowrap;
     justify-content: space-around;
     align-items: center;
-    margin-bottom: 20%;
 }
 
 #popup-cancel,

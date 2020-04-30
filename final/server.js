@@ -144,6 +144,38 @@ app.get('/profile', function (req, res) {
       });
 
 
+// save observation on database  
+app.post('/put-marker', upload.single('observation'), function (req, res, next) {
+    var isLogged = req.session.loggedin;
+    var error_msg = '';
+    // check if user logged in
+    if (!isLogged) {      
+      error_msg = "Please login to tag the location";
+              res.render('pages/login', {
+                       tagging_error: error_msg,
+                        isLoggedIn: isLogged
+                   }); return;
+    } else {
+      // get location tag variables
+      var username = req.body.username;
+      var date = req.body.date;
+      var time = req.body.time;
+      var latitude = req.body.latitude;
+      var longitude = req.body.longitude;
+      var observation_photo = req.body.observation_photo;
+      
+      db.collection('observations').updateOne(({"username": username}), ({$set: { "date": date,
+                                                                                  "time": time,
+                                                                                   "latitude": latitude,
+                                                                                  "longitude": longitude,
+                                                                                  "observation_photo": observation_photo} })), function(err, result){
+            if(err) throw err; 
+               req.session.loggedin = false;
+               res.redirect('/');
+              }
+        }
+});
+
 
 // settings route
 app.get('/settings', function (req, res) {
@@ -162,13 +194,14 @@ app.get('/signup', function (req, res) {
 // upload photo routes
 
 app.post('/upload-aurora', upload.single('aurora'), function (req, res, next) {
-
+       
+    
     //Think a if req.file = “” redirect to / and set vars as # should do it
 
    
     // req.file is the `photo` file
-    console.log("Uploaded aurora photo details" + req.file);
-    console.log("Upload aurora photo filename" + req.file.filename);
+   // console.log("Uploaded aurora photo details" + req.file);
+  //  console.log("Upload aurora photo filename" + req.file.filename);
     var photofile = req.file;
 
     // resize image to 235px width
@@ -184,6 +217,21 @@ app.post('/upload-aurora', upload.single('aurora'), function (req, res, next) {
     db.collection('photo').save(photofile, function(err, result) {
     if (err) throw err;
     console.log('Aurora photo saved to database');
+    });
+    
+    //saving observation in db
+    var username = req.session.username;
+    var long = req.body.long;
+    var lat = req.body.lat;
+    var ob_date = req.body.ob_date;
+    var ob_time = req.body.ob_time;
+    var photo_path = req.file.filename;
+    
+    
+    var newObservation = {"username" : username, "latitude" : lat, "longitude" : long, "date": ob_date, "time": ob_time, "observation_photo" : photo_path};
+    
+    db.collection('observations').save(newObservation, function(err, result) {
+    if (err) throw err;
     });
 
     res.redirect("/");
