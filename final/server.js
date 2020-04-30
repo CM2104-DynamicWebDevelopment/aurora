@@ -121,14 +121,31 @@ app.get('/profile', function (req, res) {
             // get user's details
             var username = user[0].username;
             var email = user[0].email;
+            var arrayphoto = user[0].filename;
+            console.log("Profile Pic is" + arrayphoto);
             console.log("Username is" + username);
             console.log("Email is" + email);
+
+            // fake observation data
+
+            var observation_records = [        { date:'You need', time:"to upload", latitude:'an', longitude:'observation.', observation_photo:'#' }   ];
+
+            var date = observation_records[0].date;
+            var time = observation_records[0].time;
+            var longitude = observation_records[0].longitude;
+            var latitude = observation_records[0].latitude;
+            var auroraphoto = observation_records[0].observation_photo;
+
+        observation_records.push(date, time, longitude, latitude, auroraphoto);
+        console.log("testing: " + observation_records);
 
              // render the profile page and pass the filename of the latest photo uploaded as a variable
             res.render('pages/profile', {
                 username: username,
                 email: email,
                 isLoggedIn: isLogged,
+                profilephoto: arrayphoto,
+                observation_records: observation_records
                });
         });
 
