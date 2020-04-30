@@ -106,6 +106,34 @@ app.get('/profile', function (req, res) {
     var loggedUser = req.session.username;
     console.log("Username is" + loggedUser);
     
+    var if_observation = req.session.if_observation;
+
+    console.log("If observation is:" + if_observation);
+
+    if (if_observation == false){
+
+        console.log("If statement works");
+
+        // grab user details
+
+        db.collection('profiles').find({username: loggedUser}).toArray(function (err, user) {
+            console.log("User details" + user);
+            // get user's details
+            var username = user[0].username;
+            var email = user[0].email;
+            console.log("Username is" + username);
+            console.log("Email is" + email);
+
+             // render the profile page and pass the filename of the latest photo uploaded as a variable
+            res.render('pages/profile', {
+                username: username,
+                email: email,
+                isLoggedIn: isLogged,
+               });
+        });
+
+    } else {
+
      // get observations for the username
     db.collection('observations').find({username: loggedUser}).toArray(function (err, observation) {
         console.log("Observation is:" + observation);
@@ -141,6 +169,7 @@ app.get('/profile', function (req, res) {
                });
             });
           });
+    }
       });
 
 
@@ -171,6 +200,8 @@ app.post('/put-marker', upload.single('observation'), function (req, res, next) 
                                                                                   "observation_photo": observation_photo} })), function(err, result){
             if(err) throw err; 
                req.session.loggedin = false;
+                req.session.if_observation == true;
+          console.log("If observation:" + req.session.if_observation);
                res.redirect('/');
               }
         }
@@ -247,6 +278,11 @@ app.post('/uploadProfile', upload.single('profile'), function (req, res, next) {
     var email = req.body.email;
     var error_msg = '';
     var isLogged = req.session.loggedin;
+    var if_observation = false;
+    console.log("If Observation var" + if_observation);
+    req.session.if_observation = if_observation;
+    console.log("If Observation Req" + req.session.if_observation);
+
     
     if(name == '' || password == '' || email == '' || pass_conf==''){
         error_msg = 'Please provide all details';
